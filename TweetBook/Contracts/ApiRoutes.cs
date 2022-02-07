@@ -15,7 +15,9 @@ namespace TweetBook.Contracts
         {
             public const string GetAll = Base + "/post";
             public const string Create = Base + "/post";
-            public const string Get = Base + "/post"+ "{postId}";
+            public const string Get = Base + "/post/{postId}";
+            public const string Update = Base + "/post/{postId}";
+            public const string Delete = Base + "/post/{postId}";
         }
     }
 }

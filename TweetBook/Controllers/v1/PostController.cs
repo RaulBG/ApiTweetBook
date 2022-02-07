@@ -1,9 +1,5 @@
-﻿using System.Reflection.Metadata.Ecma335;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using TweetBook.Contracts;
 using TweetBook.Controllers.v1.Requests;
 using TweetBook.Controllers.v1.Responses;
@@ -37,6 +33,33 @@ namespace TweetBook.Controllers.v1
 
             return Ok(result);
         }
+
+        [HttpPut(ApiRoutes.Post.Update)]
+        public IActionResult Update([FromRoute]Guid postId, [FromBody] UpdatePostRequest request)
+        {
+            var post = new Post { 
+                Id= postId
+            ,   Name= request.Name};
+
+            var update = _postService.UpdatePost(post);
+
+            if (update)
+                return Ok(post);
+          
+          return NotFound(); 
+        }
+
+        [HttpDelete(ApiRoutes.Post.Delete)]
+        public IActionResult Delete([FromRoute]Guid postId )
+        {
+            var isDelete = _postService.DeletePost(postId);
+
+            if (isDelete)
+                return NoContent();
+          
+          return NotFound(); 
+        }
+
 
         [HttpPost(ApiRoutes.Post.Create)]
         public IActionResult Create([FromBody] CreatePostRequest postRequest)
