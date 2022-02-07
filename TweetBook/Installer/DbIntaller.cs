@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TweetBook.Data;
 using Microsoft.AspNetCore.Identity;
+using TweetBook.Services;
 
 namespace TweetBook.Installer
 {
@@ -24,6 +25,7 @@ namespace TweetBook.Installer
             services.AddDefaultIdentity<IdentityUser>()
                 // .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<DataContext>();
+            services.AddSingleton <IPostService, PostService>();
         }
     }
 }

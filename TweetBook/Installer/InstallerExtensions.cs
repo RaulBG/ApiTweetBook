@@ -1,9 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace TweetBook.Installer
 {
@@ -22,6 +20,8 @@ namespace TweetBook.Installer
             {
                 item.InstallServices(services, configuration);
             }
+
+
 
         }
     }
